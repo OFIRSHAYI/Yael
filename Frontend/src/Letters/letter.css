@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'GveretLevin';
+  src: url('../assets/fonts/Gveret Levin AlefAlefAlef Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes goldGlow  {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.6),  /* Hot pink */
+                0 0 20px rgba(255, 105, 180, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 105, 180, 1),
+                0 0 60px rgba(255, 105, 180, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.6),
+                0 0 20px rgba(255, 105, 180, 0.4);
+  }
+}
+
+
+.glowing-gold {
+  animation: goldGlow 2s infinite;
+}
