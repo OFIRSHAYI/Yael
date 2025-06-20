@@ -1,6 +1,6 @@
 import { CheckCircleOutline, CircleOutlined, Delete } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import planService from "../api/planService";
 
 interface PlanProps {

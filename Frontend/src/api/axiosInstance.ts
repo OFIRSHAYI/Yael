@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'http://10.0.0.8:3000',
+  baseURL: 'https://yael-l79u.onrender.com',
   headers: {
     'Content-Type': 'application/json',
   },
