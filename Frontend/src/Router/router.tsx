@@ -1,37 +1,50 @@
 import { Gallery } from "../Gallery/Gallery";
 import { Home } from "../Home/";
 import { Letters } from "../Letters";
+import { MemoryGame } from "../MemoryGame";
 import { Plans } from "../Plans";
 import { TimelinePage } from "../Timeline";
 export const routes = [
     {
-        name: "זיקוקים",
+        name: "✨",
         path: "/",
         element: <Home />,
         isShown: true,
     },
     {
-        name: "השנה שלנו ביחד",
+        name: "📅",
         path: "/Timeline",
         element: <TimelinePage />,
         isShown: true,
     },
     {
-        name: "גלריה",
+        name: "🖼️",
         path: "/Gallery",
         element: <Gallery />,
         isShown: true,
     },
     {
-        name: "מכתבים",
+        name: "💌",
         path: "/Letters",
         element: <Letters />,
         isShown: true,
     },
     {
-        name: "תוכניות לעתיד",
+        name: "📍",
         path: "/Plans",
         element: <Plans />,
         isShown: true,
     },
+    {
+        name: "🃏",
+        path: "/MemoryGame",
+        element: <MemoryGame />,
+        isShown: true,
+    },
+    {
+        name: "📖",
+        path: "/Story",
+        element: <></>,
+        isShown: true,
+    }
 ];

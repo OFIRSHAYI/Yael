@@ -1,18 +1,21 @@
-import { CheckCircleOutline, CircleOutlined } from "@mui/icons-material";
+import { CheckCircleOutline, CircleOutlined, Delete } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import planService from "../api/planService";
 
 interface PlanProps {
+    id: number
     title: string,
     isDone: boolean,
+    deleteFunction: (id: number) => void;
 }
 
-export const Plan: FC<PlanProps> = ({title, isDone}) => {
+export const Plan: FC<PlanProps> = ({id, title, isDone, deleteFunction}) => {
     const [isDoneState, setIsDone ] = useState<boolean>(isDone);
     
-    const completeMission = () => {
+    const completeMission = async () => {
+        planService.changePlanStatus(id, !isDoneState);
         setIsDone(!isDoneState);
-        //TODO: create server and send status
     }
 
     return (
@@ -37,6 +40,11 @@ export const Plan: FC<PlanProps> = ({title, isDone}) => {
                     alignItems: "center",
                     padding: "20px"
                 }}>
+                    <Delete 
+                    onClick={() => deleteFunction(id)}
+                    sx={{
+                        marginLeft: "10px"
+                    }}/>
                     <Typography variant="h6">{ title }</Typography>
                     {isDoneState  ?
                     <CheckCircleOutline

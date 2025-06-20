@@ -4,6 +4,8 @@ import { routes } from "../Router";
 import { Box, Typography } from "@mui/material";
 import "./navbar.css"
 import { BackgroundMusic } from "./Music";
+import { ToastContainer } from 'react-toastify';
+
 export const Navbar: FC = () => {
 
     return (
@@ -32,6 +34,7 @@ export const Navbar: FC = () => {
             </Box>
             <Outlet />
             <BackgroundMusic />
+            <ToastContainer />
         </Box>
     )
 }
