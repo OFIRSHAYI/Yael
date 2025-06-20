@@ -23,9 +23,10 @@ export const Gallery: FC = () => {
             <Album albumName="גיוסס" />
             <Album albumName="🩸" />
             <Album albumName="חצי שנה" />
-            <Album albumName="סתם מול הים" />
+            <Album albumName="יום האהבה" />
             <Album albumName="נהריה" />
             <Album albumName="סתם אהבתי" />
+            <Album albumName="🐑" />
         </Box>
     )
 }
