@@ -41,10 +41,4 @@ export const routes = [
         element: <MemoryGame />,
         isShown: true,
     },
-    {
-        name: "📖",
-        path: "/Story",
-        element: <></>,
-        isShown: true,
-    }
 ];

@@ -110,6 +110,7 @@ const makeTurn = (imgSource: string, hideCard: () => void) => {
             overflowY: "auto",
             outline: 'none',
             border: 'none',
+            paddingTop: "50px"
         }}>
             <Fullscreen 
             onClick={handleClose}
@@ -121,9 +122,9 @@ const makeTurn = (imgSource: string, hideCard: () => void) => {
             }} />
             <Box sx={{
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "space-around",
                 alignItems: "center",
-                gap: "300px"
+                width: "50%"
             }}>
                 <Box>
                     <Typography variant="h4">יעל</Typography>
@@ -139,7 +140,10 @@ const makeTurn = (imgSource: string, hideCard: () => void) => {
             <Box sx={{ 
                 display: "flex",
                 justifyContent: "center",
-                gap: "20px",
+                gap: {
+                    xs: "10px",
+                    md: "20px"
+                },
                 flexWrap: "wrap",
                 padding: "20px"
                 }}>
