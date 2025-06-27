@@ -19,8 +19,14 @@ export const Card: FC<cardProps> = ({imgSource, makeTurn}) => {
     return (
         <Box
         sx={{
-            width: width,
-            height: height,
+            width: {
+                xs: width / 2,
+                md: width
+            },
+            height: {
+                xs: height / 2,
+                md: height
+            },
             display: "flex",
             alignItems: "center",
         }}
@@ -31,7 +37,10 @@ export const Card: FC<cardProps> = ({imgSource, makeTurn}) => {
             }
         } 
             }>
-            <Box component="img" src={isRevealed ? imgSource : memoryCardImage} height={height} width={width} borderRadius="12px" />
+            <Box component="img" src={isRevealed ? imgSource : memoryCardImage} sx={{
+                height: "100%",
+                width: "100%"
+            }} borderRadius="12px" />
         </Box>
     )
 }

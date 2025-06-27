@@ -60,7 +60,7 @@ export const Letter: FC<letterProps> = ({ letterName, isGold=false }) => {
             >
 
                 <Typography textAlign="center" variant="h5" fontFamily="GveretLevin">
-                    {letterName.slice(0, letterName.indexOf('.txt'))}
+                    {isGold ? "בקרוב..." : letterName.slice(0, letterName.indexOf('.txt'))}
                 </Typography>
             </Box>
 
