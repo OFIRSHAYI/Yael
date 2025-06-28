@@ -1,5 +1,5 @@
 import { Box, Input } from "@mui/material";
-import { FC, isValidElement, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { Plan } from "./Plan";
 import { AddCircle } from "@mui/icons-material";
 import { useGetAllPlans } from "../api/hooks/useGetAllPlans";
@@ -19,26 +19,28 @@ export const Plans: FC = () => {
     }, [plansFetch]);
 
     const addPlan = async (title: string) => {
-        try {
-            const response = await planService.createPlan(title);
+        if (title.trim().length === 0) {
+            toast.error("את צריכה לכתוב משהו גברת...");
+        } else {
+            try {
+                const response = await planService.createPlan(title);
 
-            if (response.status === HttpStatusCode.Ok) {
-                        const id = response.data;
-                        setPlans(plans.concat(<Plan id={id} title={title} isDone={false} deleteFunction={deletePlan} key={id}/>));
-                        toast.success("נוספה תוכנית שנעשה עוד שנתיים");
-                        setTitle("");
-            } else {
+                if (response.status === HttpStatusCode.Ok) {
+                            const id = response.data;
+                            setPlans(plans.concat(<Plan id={id} title={title} isDone={false} deleteFunction={deletePlan} key={id}/>));
+                            toast.success("נוספה תוכנית שנעשה עוד שנתיים");
+                            setTitle("");
+                } else {
+                    toast.error("הייתה שגיאה, כנראה שלא בא לי");
+                }
+            } catch {
                 toast.error("הייתה שגיאה, כנראה שלא בא לי");
             }
-        } catch {
-            toast.error("הייתה שגיאה, כנראה שלא בא לי");
         }
     }
 
     const deletePlan = async (id: number,) => {
         await planService.deletePlan(id);
-        setPlans(plans.filter((plan) => 
-                    isValidElement(plan) && plan.key !== id.toString()))
     }
 
     return (
