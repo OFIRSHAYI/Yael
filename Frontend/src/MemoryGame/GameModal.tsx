@@ -15,12 +15,13 @@ export const GameModal: FC<modalProps> = ({open, handleClose, }) => {
     const [shayScore, setShayScore] = useState<number>(0);
     const [couplesLeft, setCouplesLeft] = useState<number>(15);
     const [winnerString, setWinnerString] = useState<string>("");
-    
+    const [isWinnerModalOpen, setIsWinnerModalOpen] = useState<boolean>(false);
     useEffect(() => {
         if (couplesLeft === 0) {
+            setIsWinnerModalOpen(true);
             setTimeout(() => {
                 setWinnerString("יעללל!!!!!");
-            }, 1000);
+            }, 2000);
         }
     }, [couplesLeft]);
     
@@ -49,11 +50,11 @@ const makeTurn = (imgSource: string, hideCard: () => void) => {
 
                 firstCardRef.current = null;
                 hideFirstCardRef.current = null;
+
+                setTurn(prev => !prev);
+                turnRef.current = !turnRef.current;
             }, 1000);
         }
-
-        setTurn(prev => !prev);
-        turnRef.current = !turnRef.current;
     }
 };
 
@@ -148,36 +149,36 @@ const makeTurn = (imgSource: string, hideCard: () => void) => {
                 padding: "20px"
                 }}>
                 {cards}
-                {couplesLeft === 0 && 
-                    <Modal
-                    open={true}
-                    onClose={() => {}}
-                    sx={{
+                
+                <Modal
+                open={isWinnerModalOpen}
+                onClose={() => setIsWinnerModalOpen(false)}
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+                >
+                    <Box sx={{
+                        width: "50vw",
+                        height: "70vh",
+                        backgroundColor: "white",
+                        border: "none",
+                        outline: "none",
+                        borderRadius: "10px",
                         display: "flex",
                         justifyContent: "center",
-                        alignItems: "center"
-                    }}
-                    >
-                        <Box sx={{
-                            width: "50vw",
-                            height: "70vh",
-                            backgroundColor: "white",
-                            border: "none",
-                            outline: "none",
-                            borderRadius: "10px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            flexDirection: "column"
-                        }}>
-                            <Typography variant="h4">
-                                והמנצח הואאאא.... היאאאאאא.... הםםםםםםם....
-                            </Typography>
-                            <Typography variant="h1">
-                                {winnerString}
-                            </Typography>
-                        </Box>
-                    </Modal>}
+                        alignItems: "center",
+                        flexDirection: "column"
+                    }}>
+                        <Typography variant="h4">
+                            והמנצח הואאאא.... היאאאאאא.... הםםםםםםם....
+                        </Typography>
+                        <Typography variant="h1">
+                            {winnerString}
+                        </Typography>
+                    </Box>
+                </Modal>
             </Box>
         </Box>
     </Modal>

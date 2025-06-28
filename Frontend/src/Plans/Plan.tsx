@@ -12,14 +12,16 @@ interface PlanProps {
 
 export const Plan: FC<PlanProps> = ({id, title, isDone, deleteFunction}) => {
     const [isDoneState, setIsDone ] = useState<boolean>(isDone);
-    
+    const [isDeleted, setIsDeleted] = useState<boolean>(false);
+
     const completeMission = async () => {
         planService.changePlanStatus(id, !isDoneState);
         setIsDone(!isDoneState);
     }
 
     return (
-        <Box sx={{
+        <>
+        {(!isDeleted) && <Box sx={{
                 width: {
                     xs: "80vw",
                     md: "40vw"
@@ -41,7 +43,10 @@ export const Plan: FC<PlanProps> = ({id, title, isDone, deleteFunction}) => {
                     padding: "20px"
                 }}>
                     <Delete 
-                    onClick={() => deleteFunction(id)}
+                    onClick={() =>  {
+                        setIsDeleted(true);
+                        deleteFunction(id);
+                    }}
                     sx={{
                         marginLeft: "10px"
                     }}/>
@@ -65,5 +70,7 @@ export const Plan: FC<PlanProps> = ({id, title, isDone, deleteFunction}) => {
                     }
                 </Box>
         </Box>
+        }
+        </>
     )
 }
